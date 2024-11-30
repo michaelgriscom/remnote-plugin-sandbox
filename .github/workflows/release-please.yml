@@ -23,32 +23,32 @@ jobs:
       # Update the manifest
       - name: Update Manifest
         run: |
-            echo ${{ steps.release.outputs.release_created }}
-            echo ${{ steps.release.outputs.major }}
-            echo ${{ steps.release.outputs.minor }}
-            echo ${{ steps.release.outputs.patch }}
-            # # Debugging step to confirm files exist
-            # echo "Current directory contents:"
-            # ls -la
+            # Debugging step to confirm files exist
+            echo "Current directory contents:"
+            ls -la
         
-            # git switch release-please--branches--main--components--remnote-plugin-sandbox
+            git switch release-please--branches--main--components--remnote-plugin-template-react
 
-            # # Extract version from package.json
-            # version=$(jq -r .version package.json)
-            # major=$(echo $version | cut -d. -f1)
-            # minor=$(echo $version | cut -d. -f2)
-            # patch=$(echo $version | cut -d. -f3)
+            # Extract version from package.json
+            version=$(jq -r .version package.json)
+            major=$(echo $version | cut -d. -f1)
+            minor=$(echo $version | cut -d. -f2)
+            patch=$(echo $version | cut -d. -f3)
         
-            # # Update manifest
-            # jq ".version.major = $major | .version.minor = $minor | .version.patch = $patch" manifest.json > manifest_tmp.json
-            # mv manifest_tmp.json manifest.json
+            # Update manifest
+            jq ".version.major = $major | .version.minor = $minor | .version.patch = $patch" manifest.json > manifest_tmp.json
+            mv manifest_tmp.json manifest.json
         
-            # # Commit and push
-            # git add manifest.json
-            # git commit -m "Update manifest version to $version"
-            # git push
-      - name: Upload Release Artifact
-        if: ${{ steps.release.outputs.release_created }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release upload ${{ steps.release.outputs.tag_name }} ./PluginZip.zip
+            # Commit and push
+            git add manifest.json
+            git commit -m "Update manifest version to $version"
+            git push
+    #   - name: Upload Release Artifact
+    #     if: ${{ steps.release.outputs.release_created }}
+    #   - run: npm ci
+    #     if: ${{ steps.release.outputs.release_created }}
+    #   - run: npm run build
+    #     env:
+    #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #     if: ${{ steps.release.outputs.release_created }}
+    #     run: gh release upload ${{ steps.release.outputs.tag_name }} ./PluginZip.zip

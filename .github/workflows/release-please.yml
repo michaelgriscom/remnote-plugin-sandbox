@@ -33,7 +33,7 @@ jobs:
             git config user.name github-actions[bot]
             git config user.email github-actions[bot]@users.noreply.github.com
           
-            git switch release-please--branches--main--components--remnote-plugin-template-react
+            git switch ${{ steps.release.outputs.pr.headBranchName }}
 
             # Extract version from package.json
             version=$(jq -r .version package.json)

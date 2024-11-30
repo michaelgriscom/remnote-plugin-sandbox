@@ -45,11 +45,11 @@ jobs:
             patch=$(echo $version | cut -d. -f3)
         
             # Update manifest
-            jq ".version.major = $major | .version.minor = $minor | .version.patch = $patch" manifest.json > manifest_tmp.json
-            mv manifest_tmp.json manifest.json
+            jq ".version.major = $major | .version.minor = $minor | .version.patch = $patch" public/manifest.json > manifest_tmp.json
+            mv manifest_tmp.json public/manifest.json
         
             # Commit and push
-            git add manifest.json
+            git add public/manifest.json
             git commit -m "chore: Update manifest version"
             git push
     #   - name: Upload Release Artifact

@@ -19,18 +19,14 @@ jobs:
           token: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
-      - name: Debug Release Please Outputs
-        run: |
-          echo "PR created ${{ steps.release.outputs.prs_created }}"
-          echo "PR Output: ${{ steps.release.outputs.pr }}"
       - uses: actions/checkout@v4
-        if: ${{ steps.release.outputs.prs_created }}
+        if: ${{ steps.release.outputs.pr }}
         with:
           ref: ${{ steps.release.outputs.pr.headBranchName }}
           fetch-depth: 0
       # Update the manifest
       - name: Update Manifest
-        if: ${{ steps.release.outputs.prs_created }}
+        if: ${{ steps.release.outputs.pr }}
         run: |
             # Debugging step to confirm files exist 
             echo "Current directory contents:"
@@ -54,12 +50,11 @@ jobs:
             git add public/manifest.json
             git commit -m "chore: Update manifest version"
             git push
-    #   - name: Upload Release Artifact
-    #     if: ${{ steps.release.outputs.release_created }}
-    #   - run: npm ci
-    #     if: ${{ steps.release.outputs.release_created }}
-    #   - run: npm run build
-    #     env:
-    #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #     if: ${{ steps.release.outputs.release_created }}
-    #     run: gh release upload ${{ steps.release.outputs.tag_name }} ./PluginZip.zip
+      - name: Upload Release Artifact
+        if: ${{ steps.release.outputs.release_created }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+            npm ci
+            npm run build
+            gh release upload ${{ steps.release.outputs.tag_name }} ./PluginZip.zip

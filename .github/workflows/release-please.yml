@@ -26,26 +26,26 @@ jobs:
             echo ${{ steps.release.outputs.major }}
             echo ${{ steps.release.outputs.minor }}
             echo ${{ steps.release.outputs.patch }}
-            #   # Debugging step to confirm files exist
-            #   echo "Current directory contents:"
-            #   ls -la
-            
-            #   git switch release-please--branches--main--components--remnote-plugin-sandbox
-    
-            #   # Extract version from package.json
-            #   version=$(jq -r .version package.json)
-            #   major=$(echo $version | cut -d. -f1)
-            #   minor=$(echo $version | cut -d. -f2)
-            #   patch=$(echo $version | cut -d. -f3)
-            
-            #   # Update manifest.json
-            #   jq ".version.major = $major | .version.minor = $minor | .version.patch = $patch" manifest.json > manifest_tmp.json
-            #   mv manifest_tmp.json manifest.json
-            
-            #   # Commit and push
-            #   git add manifest.json
-            #   git commit -m "Update manifest version to $version"
-            #   git push
+            # # Debugging step to confirm files exist
+            # echo "Current directory contents:"
+            # ls -la
+        
+            # git switch release-please--branches--main--components--remnote-plugin-sandbox
+
+            # # Extract version from package.json
+            # version=$(jq -r .version package.json)
+            # major=$(echo $version | cut -d. -f1)
+            # minor=$(echo $version | cut -d. -f2)
+            # patch=$(echo $version | cut -d. -f3)
+        
+            # # Update manifest
+            # jq ".version.major = $major | .version.minor = $minor | .version.patch = $patch" manifest.json > manifest_tmp.json
+            # mv manifest_tmp.json manifest.json
+        
+            # # Commit and push
+            # git add manifest.json
+            # git commit -m "Update manifest version to $version"
+            # git push
       - name: Upload Release Artifact
         if: ${{ steps.release.outputs.release_created }}
         env:

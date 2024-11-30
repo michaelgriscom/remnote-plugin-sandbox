@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v4
         if: ${{ steps.release.outputs.prs_created }}
         with:
-          ref: ${{ fromJson(steps.release.outputs.pr).head.ref }}
+          ref: ${{ fromJson(steps.release.outputs.pr).headBranchName }}
           fetch-depth: 0
       # Update the manifest
       - name: Update Manifest

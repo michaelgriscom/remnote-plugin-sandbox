@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.7](https://github.com/michaelgriscom/remnote-plugin-sandbox/compare/remnote-plugin-template-react-v0.2.6...remnote-plugin-template-react-v0.2.7) (2024-11-30)
+
+
+### Bug Fixes
+
+* gh token ([fe3b2f1](https://github.com/michaelgriscom/remnote-plugin-sandbox/commit/fe3b2f1a2f81e0d17c9ce52b1e95afdee2ef5904))
+
 ## [0.2.6](https://github.com/michaelgriscom/remnote-plugin-sandbox/compare/remnote-plugin-template-react-v0.2.5...remnote-plugin-template-react-v0.2.6) (2024-11-30)
 
 

@@ -35,7 +35,9 @@ jobs:
             # Debugging step to confirm files exist 
             echo "Current directory contents:"
             ls -la
-        
+            git config user.name github-actions[bot]
+            git config user.email github-actions[bot]@users.noreply.github.com
+          
             git switch release-please--branches--main--components--remnote-plugin-template-react
 
             # Extract version from package.json

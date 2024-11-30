@@ -23,6 +23,7 @@ jobs:
       # Update the manifest
       - name: Update Manifest
         run: |
+            echo ${{ steps.release.outputs.release_created }}
             echo ${{ steps.release.outputs.major }}
             echo ${{ steps.release.outputs.minor }}
             echo ${{ steps.release.outputs.patch }}

@@ -19,6 +19,10 @@ jobs:
           token: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
+      - name: Debug Release Please Outputs
+        run: |
+          echo "PR Output: ${{ steps.release.outputs.pr }}"
+          echo "PR Output Type: ${{ fromJson(steps.release.outputs.pr) }}"
       - uses: actions/checkout@v4
         if: ${{ steps.release.outputs.prs_created }}
         with:

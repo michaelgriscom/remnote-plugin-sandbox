@@ -48,11 +48,17 @@ jobs:
             git add public/manifest.json
             git commit -m "chore: Update manifest version"
             git push
-      - name: Upload Release Artifact
+      - name: Set up node
         if: ${{ steps.release.outputs.release_created }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         uses: dcodeIO/setup-node-nvm@master
-      - run: npm ci
-      - run: npm run build
-      - run: gh release upload ${{ steps.release.outputs.tag_name }} ./PluginZip.zip
+      - name: Install Dependencies
+        if: ${{ steps.release.outputs.release_created }}
+        run: npm ci
+      - name: Build the Project
+        if: ${{ steps.release.outputs.release_created }}
+        run: npm run build
+      - name: Upload Release
+        if: ${{ steps.release.outputs.release_created }}
+        run: gh release upload ${{ steps.release.outputs.tag_name }} ./PluginZip.zip

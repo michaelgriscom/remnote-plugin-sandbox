@@ -29,8 +29,6 @@ jobs:
         if: ${{ steps.release.outputs.pr }}
         run: |
             # Debugging step to confirm files exist
-            echo "Current directory contents:"
-            ls -la
             git config user.name github-actions[bot]
             git config user.email github-actions[bot]@users.noreply.github.com
           
@@ -54,7 +52,7 @@ jobs:
         if: ${{ steps.release.outputs.release_created }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-            npm ci
-            npm run build
-            gh release upload ${{ steps.release.outputs.tag_name }} ./PluginZip.zip
+        uses: dcodeIO/setup-node-nvm@master
+      - run: npm ci
+      - run: npm run build
+      - run: gh release upload ${{ steps.release.outputs.tag_name }} ./PluginZip.zip

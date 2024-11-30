@@ -47,7 +47,7 @@ jobs:
         
             # Commit and push
             git add public/manifest.json
-            git commit -m "chore: Update manifest version"
+            git commit -m "chore: Update manifest version to $version"
             git push
       - name: Check out code
         if: ${{ steps.release.outputs.release_created }}

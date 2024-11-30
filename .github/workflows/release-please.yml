@@ -20,8 +20,13 @@ jobs:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
       - uses: actions/checkout@v4
+        if: ${{ steps.release.outputs.prs_created }}
+        with:
+          ref: ${{ fromJson(steps.release.outputs.pr).head.ref }}
+          fetch-depth: 0
       # Update the manifest
       - name: Update Manifest
+        if: ${{ steps.release.outputs.prs_created }}
         run: |
             # Debugging step to confirm files exist
             echo "Current directory contents:"
@@ -41,7 +46,7 @@ jobs:
         
             # Commit and push
             git add manifest.json
-            git commit -m "Update manifest version to $version"
+            git commit -m "chore: Update manifest version"
             git push
     #   - name: Upload Release Artifact
     #     if: ${{ steps.release.outputs.release_created }}

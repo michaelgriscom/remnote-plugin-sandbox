@@ -19,7 +19,8 @@ jobs:
           token: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
-      - uses: actions/checkout@v4
+      - name: Check out PR
+        uses: actions/checkout@v4
         if: ${{ steps.release.outputs.pr }}
         with:
           ref: ${{ steps.release.outputs.pr.headBranchName }}
@@ -53,9 +54,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         uses: actions/checkout@v4
-      - name: Set up NVM
-        if: ${{ steps.release.outputs.release_created }}
-        uses: dcodeIO/setup-node-nvm@master
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
       - name: Install Dependencies
         if: ${{ steps.release.outputs.release_created }}
         run: npm ci

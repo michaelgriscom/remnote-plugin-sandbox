@@ -28,7 +28,7 @@ jobs:
       - name: Update Manifest
         if: ${{ steps.release.outputs.pr }}
         run: |
-            # Debugging step to confirm files exist 
+            # Debugging step to confirm files exist
             echo "Current directory contents:"
             ls -la
             git config user.name github-actions[bot]

@@ -31,7 +31,7 @@ jobs:
       - name: Update Manifest
         if: ${{ steps.release.outputs.prs_created }}
         run: |
-            # Debugging step to confirm files exist
+            # Debugging step to confirm files exist 
             echo "Current directory contents:"
             ls -la
         

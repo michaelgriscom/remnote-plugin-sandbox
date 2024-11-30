@@ -22,7 +22,6 @@ jobs:
       - name: Debug Release Please Outputs
         run: |
           echo "PR Output: ${{ steps.release.outputs.pr }}"
-          echo "PR Output Type: ${{ fromJson(steps.release.outputs.pr) }}"
       - uses: actions/checkout@v4
         if: ${{ steps.release.outputs.prs_created }}
         with:

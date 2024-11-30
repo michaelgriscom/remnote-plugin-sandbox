@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.2.8](https://github.com/michaelgriscom/remnote-plugin-sandbox/compare/remnote-plugin-template-react-v0.2.7...remnote-plugin-template-react-v0.2.8) (2024-11-30)
+
+
+### Bug Fixes
+
+* t ([abc9994](https://github.com/michaelgriscom/remnote-plugin-sandbox/commit/abc99941af2adfa686c6a8c80e08247907081dc2))
+* test ([f9a7a40](https://github.com/michaelgriscom/remnote-plugin-sandbox/commit/f9a7a408170beabcc86c47bfcf7d60e817f696d4))
+* test ([37ff21f](https://github.com/michaelgriscom/remnote-plugin-sandbox/commit/37ff21f2d1c42187b3d10d34ad04c91b64747722))
+
 ## [0.2.7](https://github.com/michaelgriscom/remnote-plugin-sandbox/compare/remnote-plugin-template-react-v0.2.6...remnote-plugin-template-react-v0.2.7) (2024-11-30)
 
 

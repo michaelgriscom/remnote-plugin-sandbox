@@ -21,11 +21,12 @@ jobs:
           manifest-file: .release-please-manifest.json
       - name: Debug Release Please Outputs
         run: |
+          echo "PR created ${{ steps.release.outputs.prs_created }}"
           echo "PR Output: ${{ steps.release.outputs.pr }}"
       - uses: actions/checkout@v4
         if: ${{ steps.release.outputs.prs_created }}
         with:
-          ref: ${{ fromJson(steps.release.outputs.pr).headBranchName }}
+          ref: ${{ steps.release.outputs.pr.headBranchName }}
           fetch-depth: 0
       # Update the manifest
       - name: Update Manifest

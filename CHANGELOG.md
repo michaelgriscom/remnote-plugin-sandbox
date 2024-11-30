@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/michaelgriscom/remnote-plugin-sandbox/compare/remnote-plugin-template-react-v0.2.2...remnote-plugin-template-react-v0.2.3) (2024-11-30)
+
+
+### Bug Fixes
+
+* release ([e0a57e6](https://github.com/michaelgriscom/remnote-plugin-sandbox/commit/e0a57e63f6a334e17dab9de6bd52b3f16a9caa0f))
+
 ## [0.2.2](https://github.com/michaelgriscom/remnote-plugin-sandbox/compare/remnote-plugin-template-react-v0.2.1...remnote-plugin-template-react-v0.2.2) (2024-11-30)
 
 
